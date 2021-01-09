@@ -1,0 +1,46 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Manrope', sans-serif;
+}
+
+h1 {
+  font-size: 5rem;
+  font-weight: 900;
+}
+
+h2 {
+  font-size: 3rem;
+  font-weight: 800;
+}
+
+a {
+  text-decoration: none;
+}
+
+@mixin button {
+  outline: none;
+  cursor: pointer;
+  display: block;
+  padding: 0.8em 3em;
+  background-color: #8C30F5;
+  border-radius: 8px;
+  border: none;
+  height: 50%;
+  color: #ffffff;
+  font-weight: 600;
+  letter-spacing: 1.2;
+
+  &:hover {
+      animation: button-animation .3s ease-in-out;
+      @keyframes button-animation {
+          0% {transform: rotate(0);}
+          50% {transform: rotate(-8deg);}
+          75% {transform: rotate(3deg);}
+          100% {transform: rotate(0);}
+      }
+  }
+}

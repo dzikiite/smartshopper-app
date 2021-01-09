@@ -1,0 +1,30 @@
+.products-container {
+    transform: translateX(20%);
+
+    table {
+        border-collapse: collapse;
+        width: 40vw;
+        color: #ffffff;
+
+        th, td {
+            border: 1px solid #242424;
+            padding: 10px;
+        }
+
+        th {
+            background-color: #8C30F5;
+        }
+
+        tr {
+            background-color: #ffffff;
+            
+            &:nth-child(odd) {
+                background-color: #f2f2f2;
+            }
+        }
+
+        td {
+            color: #242424;
+        }
+    }
+}
