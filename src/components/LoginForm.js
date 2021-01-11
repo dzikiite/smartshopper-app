@@ -2,12 +2,9 @@ import React, { useState, useEffect, useRef } from 'react';
 import '../styles/LoginForm.scss';
 import UserIcon from '../assets/login-user.svg';
 import PasswordIcon from '../assets/login-password.svg';
-import axios from 'axios';
-import { API_URL } from '../utils/constants';
 import { useHistory } from 'react-router-dom';
 import { useForm } from '../hooks/useForm';
-
-const { GET_USERS } = API_URL;
+import { fetchUsers } from '../utils/fetchData';
 
 const LoginForm = () => {
     const [users, setUsers] = useState({});
@@ -17,9 +14,7 @@ const LoginForm = () => {
     const history = useHistory();
 
     useEffect(() => {
-        axios.get(GET_USERS)
-         .then(res => setUsers(res.data))
-         .catch(err => console.log(err));
+        fetchUsers().then(data => setUsers(data));
      }, []);
 
     const { login, password } = loginValues;
@@ -29,13 +24,13 @@ const LoginForm = () => {
 
         const { login, password } = loginValues;
 
-        users.map(user => {
+        users.forEach(user => {
             if(login === user.login && password === user.password) {
                 history.push('/app');
             } else {
                  handleErrors();
             }
-        })
+        });
     }
 
     return ( 

@@ -11,7 +11,7 @@ const Layout = () => {
         <div className="page-container">
             <Router>
                 <Navigation />
-                <Route path="/app" component={ProductsList} />
+                <Route path="/app" exact component={ProductsList} />
                 <Route path="/app/brands" component={BrandsList} />
             </Router>
         </div>

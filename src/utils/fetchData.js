@@ -9,23 +9,35 @@ const {
   POST_PRODUCTS
 } = API_URL;
 
-export const fetchBrands = () => (
-  axios.get(GET_BRANDS)
-    .then(res => res.data)
-    .catch(err => new Error(err))
-);
+export const fetchBrands = async() => {
+  try { 
+    const response = await axios.get(GET_BRANDS);
+    const data = await response.data;
+    return data;
+  } catch(err) {
+    console.log(err)
+  }
+};
 
-export const fetchProducts = () => {
-  axios.get(GET_PRODUCTS)
-    .then(res => res.data)
-    .catch(err => new Error(err));
+export const fetchProducts = async () => {
+  try { 
+    const response = await axios.get(GET_PRODUCTS);
+    const data = await response.data;
+    return data;
+  } catch(err) {
+    console.log(err)
+  }
 }
 
-export const fetchUsers = () => (
-  axios.get(GET_USERS)
-    .then(res => res.data)
-    .catch(err => new Error(err))
-);
+export const fetchUsers = async () => {
+  try { 
+    const response = await axios.get(GET_USERS);
+    const data = await response.data;
+    return data;
+  } catch(err) {
+    console.log(err)
+  }
+};
 
 export const postBrandData = () => {
   axios.post(POST_BRANDS, {})

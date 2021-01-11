@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import '../styles/LoginPage.scss';
 import Logo from '../assets/logo.svg';
 import LoginForm from '../components/LoginForm';
@@ -9,7 +9,7 @@ const LoginPage = () => {
             <header className="header-container">
                 <div className="header">
                     <img src={Logo} alt="smartshopper-logo"/>
-                    <a href="#"><button>Landing Page</button></a>
+                    <a href="https://smartshopper-site.netlify.app/"><button>Landing Page</button></a>
                 </div>
             </header>
             <LoginForm />

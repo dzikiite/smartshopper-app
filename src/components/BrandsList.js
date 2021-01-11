@@ -1,4 +1,5 @@
 import React from 'react';
+import '../styles/BrandsList.scss';
 
 const BrandsList = () => {
     return ( 
@@ -6,7 +7,7 @@ const BrandsList = () => {
             <table >
 	            <tbody>
 		            <tr>
-			            <td> </td>
+			            <td> Test</td>
 			            <td> </td>
 		            </tr>
 	            </tbody>

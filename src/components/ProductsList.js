@@ -5,6 +5,7 @@ const ProductsList = () => {
     return ( 
         <div className="products-container">
             <table>
+                <tbody>
 		        <tr>
 			        <th>Produkt</th>
 			        <th>Link</th>
@@ -26,6 +27,7 @@ const ProductsList = () => {
                     <td></td>
                     <td></td>
                 </tr>
+                </tbody>
             </table>
         </div>
      );
