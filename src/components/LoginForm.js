@@ -8,7 +8,7 @@ import { fetchUsers } from '../utils/fetchData';
 
 const LoginForm = () => {
     const [users, setUsers] = useState({});
-    const { loginValues, handleChange, errors, handleErrors } = useForm();
+    const { values, handleChange, errors, handleErrors } = useForm();
     const loginRef = useRef(null);
     const passwordRef = useRef(null);
     const history = useHistory();
@@ -17,12 +17,12 @@ const LoginForm = () => {
         fetchUsers().then(data => setUsers(data));
      }, []);
 
-    const { login, password } = loginValues;
+    const { login, password } = values;
 
     const handleSubmit = (event) => {
         event.preventDefault();
 
-        const { login, password } = loginValues;
+        const { login, password } = values;
 
         users.forEach(user => {
             if(login === user.login && password === user.password) {

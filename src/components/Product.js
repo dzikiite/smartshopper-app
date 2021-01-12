@@ -1,6 +1,6 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { AiOutlineFire } from 'react-icons/ai';
+import { AiOutlineFire, AiFillDelete, AiFillEdit } from 'react-icons/ai';
 
 const Product = ({...props}) => {
 
@@ -15,6 +15,10 @@ const Product = ({...props}) => {
             <td>{brands}</td>
             <td>{price}zł</td>
             <td>{priority ? <AiOutlineFire /> : '-'}</td>
+            <td>
+            <button className="action-btn"><AiFillDelete /></button>
+            <button className="action-btn"><AiFillEdit /></button>
+            </td>
         </tr>
      );
 }

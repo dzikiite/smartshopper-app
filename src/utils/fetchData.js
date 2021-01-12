@@ -6,7 +6,9 @@ const {
   GET_PRODUCTS,
   GET_USERS,
   POST_BRANDS,
-  POST_PRODUCTS
+  POST_PRODUCTS,
+  DELETE_BRAND,
+  DELETE_PRODUCT,
 } = API_URL;
 
 export const fetchBrands = async() => {
@@ -23,8 +25,6 @@ export const fetchProducts = async () => {
   try { 
     const response = await axios.get(GET_PRODUCTS);
     const data = await response.data;
-    console.log('helper:')
-    console.log(data);
     return data;
   } catch(err) {
     console.log(err)
@@ -41,14 +41,33 @@ export const fetchUsers = async () => {
   }
 };
 
-export const postBrandData = () => {
-  axios.post(POST_BRANDS, {})
-    .then(res => console.log(res))
-    .catch(err => console.log(`postBrandData error: ${err}`));
+export const postBrandData = async (brand) => {
+  try {
+    const response = await axios.post(POST_BRANDS, brand);
+    const data = await JSON.stringify(response);
+    return data;
+  } catch(err) {
+    console.log(`błąd wysyłania ${err}`);
+  }
 }
 
-export const postProductsData = () => {
-  axios.post(POST_PRODUCTS, {})
-    .then(res => console.log(res))
-    .catch(err => console.log(`postProductsData error: ${err}`));
+export const postProductsData = async (product) => {
+  try {
+    const response = await axios.post(POST_PRODUCTS, product);
+    const data = await JSON.stringify(response);
+    return data;
+  } catch(err) {
+    console.log(`błąd wysyłania ${err}`);
+  }
+}
+
+export const deleteBrand = async (brand) => {
+  console.log(brand);
+  try {
+    const response = axios.delete(DELETE_BRAND, brand);
+    console.log(response);
+    return response;
+  } catch(err) {
+    console.log(err);
+  }
 }

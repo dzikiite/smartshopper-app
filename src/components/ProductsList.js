@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import '../styles/ProductsList.scss';
 import Product from './Product';
 import { useDispatch, useSelector } from 'react-redux';
-import { getProducts, removeProduct } from '../actions/productsAction';
+import { getProducts } from '../actions/productsAction';
 
 const ProductsList = () => {
 
@@ -19,7 +19,7 @@ const ProductsList = () => {
             key={product._id}
             {...product}/>
         )
-    })
+    });
 
 
     return ( 

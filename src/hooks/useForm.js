@@ -2,22 +2,24 @@ import { useState } from 'react';
 import { validateInfo } from '../utils/validateInfo';
 
 export const useForm = () => { 
-    const [loginValues, setLoginValues] = useState({
+    const [values, setValues] = useState({
         login: '',
         password: '',
+        brandName: '',
+        brandLink: '',
     })
 
     const [errors, setErrors] = useState();
 
-    const handleErrors = () => setErrors(validateInfo(loginValues));
+    const handleErrors = () => setErrors(validateInfo(values));
 
     const handleChange = event => {
         const { name, value } = event.target;
-        setLoginValues({
-            ...loginValues,
+        setValues({
+            ...values,
             [name]: value
         })
     }
 
-    return { handleChange, loginValues, handleErrors, errors };
+    return { handleChange, values, setValues, handleErrors, errors };
 }

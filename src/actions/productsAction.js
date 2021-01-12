@@ -1,14 +1,15 @@
 import { fetchProducts } from '../utils/fetchData';
+import { v4 as uuidv4 } from 'uuid';
 
 export const ADD_PRODUCT = 'ADD_PRODUCT';
 export const REMOVE_PRODUCT = 'REMOVE_PRODUCT';
 export const EDIT_PRODUCT = 'EDIT_PRODUCT';
 export const GET_PRODUCTS = 'GET_PRODUCTS';
 
-export const addProduct = ({id, name, link, brand, price, priority}) => ({
+export const addProduct = (name, link, brand, price, priority) => ({
     type: ADD_PRODUCT,
     payload: {
-        id, 
+        id: uuidv4(), 
         name, 
         link,
         brand,
@@ -24,7 +25,7 @@ export const removeProduct = (id) => ({
     }
 });
 
-export const editProduct = ({id, name, link, brand, price, priority}) => ({
+export const editProduct = (id, name, link, brand, price, priority) => ({
     type: EDIT_PRODUCT,
     payload: {
         id,
