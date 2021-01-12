@@ -1,7 +1,27 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import '../styles/ProductsList.scss';
+import Product from './Product';
+import { useDispatch, useSelector } from 'react-redux';
+import { getProducts, removeProduct } from '../actions/productsAction';
 
 const ProductsList = () => {
+
+    const products = useSelector(store => store.products);
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch(getProducts()); 
+    }, []);
+
+    const product = products.map(product => {
+        return (
+            <Product 
+            key={product._id}
+            {...product}/>
+        )
+    })
+
+
     return ( 
         <div className="products-container">
             <table>
@@ -12,21 +32,9 @@ const ProductsList = () => {
 			        <th>Marka</th>
 			        <th>Cena</th>
 			        <th>Priorytet</th>
+                    <th>Akcje</th>
 		        </tr>
-                <tr>
-                    <td>Test</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td>Test</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
+                {product}
                 </tbody>
             </table>
         </div>

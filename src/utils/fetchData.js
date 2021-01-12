@@ -23,6 +23,8 @@ export const fetchProducts = async () => {
   try { 
     const response = await axios.get(GET_PRODUCTS);
     const data = await response.data;
+    console.log('helper:')
+    console.log(data);
     return data;
   } catch(err) {
     console.log(err)
