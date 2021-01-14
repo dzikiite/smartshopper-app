@@ -6,7 +6,7 @@ import {
   Route
 } from 'react-router-dom';
 import LoginPage from './pages/LoginPage';
-import Layout from './components/Layout';
+import Layout from './pages/Layout';
 import ErrorPage from './pages/ErrorPage';
 
 function App() {

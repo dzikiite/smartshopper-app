@@ -11,7 +11,7 @@ export const useForm = () => {
         productLink: '',
         productBrand: '',
         productPrice: '',
-        productPriority: false,
+        productPriority: true,
     })
 
     const [errors, setErrors] = useState();
@@ -34,7 +34,7 @@ export const useForm = () => {
             const { text } = event.target[event.target.selectedIndex];
             setValues({
                 ...values,
-                [name]: text
+                [name]: text,
             })
         } 
     }

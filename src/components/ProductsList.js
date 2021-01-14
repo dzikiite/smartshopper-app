@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import '../styles/ProductsList.scss';
 import Product from './Product';
 import AddProductForm from './AddProductForm';
@@ -8,6 +8,8 @@ import { getBrands } from '../actions/brandsAction';
 
 const ProductsList = () => {
 
+    const [ actionType, setActionType ] = useState(true);
+    const [ editValues, setEditValues ] = useState({});
     const products = useSelector(store => store.products);
     const dispatch = useDispatch();
 
@@ -16,14 +18,26 @@ const ProductsList = () => {
         dispatch(getBrands());
     }, []);
 
+    const handleEditProduct = (id, name, link, brand, price, priority) => {
+        setEditValues({
+            id,
+            editedProductName: name,
+            editedProductLink: link,
+            editedProductBrand: brand,
+            editedProductPrice: price,
+            editedProductPriority: priority,
+        })
+        setActionType(false)
+    }
+
     const product = products.map(product => {
         return (
             <Product 
             key={product.id}
+            handleEditProduct={handleEditProduct}
             {...product}/>
         )
     });
-
 
     return ( 
         <div className="products-container">
@@ -40,7 +54,10 @@ const ProductsList = () => {
                 {product}
                 </tbody>
             </table>
-            <AddProductForm />
+            <AddProductForm 
+            actionType={actionType}
+            setActionType={setActionType}
+            editValues={editValues}/>
         </div>
      );
 }

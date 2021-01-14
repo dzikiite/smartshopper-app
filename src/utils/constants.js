@@ -6,4 +6,6 @@ export const API_URL = {
     POST_PRODUCTS: 'http://localhost:9000/v2/products',
     DELETE_BRAND: 'http://localhost:9000/v3/brands',
     DELETE_PRODUCT: 'http://localhost:9000/v3/products',
+    PUT_BRAND: 'http://localhost:9000/v4/brands',
+    PUT_PRODUCT: 'http://localhost:9000/v4/products',
 }

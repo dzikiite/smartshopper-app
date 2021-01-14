@@ -1,32 +1,6 @@
 .products-container {
-    transform: translateX(10%);
-
-
-    table {
-        border-collapse: collapse;
-        width: 60vw;
-        color: #ffffff;
-        text-align: center;
-      
-        th, td {
-            border: 1px solid #242424;
-            padding: 10px;
-        }
-      
-        th {
-            background-color: #8C30F5;
-        }
-      
-        tr {
-            background-color: #ffffff;
-            
-            &:nth-child(odd) {
-                background-color: #f2f2f2;
-            }
-        }
-      
-        td {
-            color: #242424;
-        }
-    }
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
 }

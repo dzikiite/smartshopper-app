@@ -1,5 +1,5 @@
 import { ADD_PRODUCT, REMOVE_PRODUCT, EDIT_PRODUCT, GET_PRODUCTS } from '../actions/productsAction';
-import { postProductData, deleteProduct } from '../utils/fetchData';
+import { postProductData, deleteProduct, putProduct } from '../utils/fetchData';
 
 const initialState = [];
 
@@ -12,6 +12,7 @@ export const productsReducer = (state = initialState, action) => {
             deleteProduct(action.payload);
             return state.filter(product => product.id != action.payload.id);
         case EDIT_PRODUCT:
+            putProduct(action.payload);
             const { id, name, link, brand, price, priority } = action.payload;
             return state.map(product => {
                 if(product.id !== id) {

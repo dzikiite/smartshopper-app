@@ -11,8 +11,6 @@ const AddBrandForm = ({ actionType, setActionType, editValues }) => {
     const { id, editedBrandName, editedBrandLink } = editValues;
 
     useEffect(() => {
-        console.log('form:')
-        console.log(editedBrandName);
         if (!actionType) {
             setValues({
                 ...values,

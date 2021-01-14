@@ -44,3 +44,33 @@ a {
       }
   }
 }
+
+table {
+  border-collapse: collapse;
+  width: 70vw;
+  color: #ffffff;
+  text-align: center;
+  box-shadow: 2px 0px 6px 0px rgba(50, 50, 51, 0.51);
+  padding: 3rem;
+
+  th, td {
+      border: 1px solid #d3d3d3;
+      padding: 10px;
+  }
+
+  th {
+      background-color: #8C30F5;
+  }
+
+  tr {
+      background-color: #ffffff;
+      
+      &:nth-child(odd) {
+          background-color: #f2f2f2;
+      }
+  }
+
+  td {
+      color: #242424;
+  }
+}

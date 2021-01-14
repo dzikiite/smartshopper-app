@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useForm } from '../hooks/useForm';
 import { useSelector, useDispatch } from 'react-redux';
-import { addProduct } from '../actions/productsAction';
+import { addProduct, editProduct } from '../actions/productsAction';
 import '../styles/AddProductForm.scss';
 
-const AddProductForm = () => {
+const AddProductForm = ({ actionType, setActionType, editValues }) => {
     const { values, setValues, handleChange } = useForm();
     const { 
         productName, 
@@ -14,6 +14,51 @@ const AddProductForm = () => {
         productPriority } = values;
     const brands = useSelector(store => store.brands);
     const dispatch = useDispatch();
+    const { 
+        id, 
+        editedProductName, 
+        editedProductLink,
+        editedProductBrand,
+        editedProductPrice,
+        editedProductPriority} = editValues;
+
+    useEffect(() => {
+        if(!actionType) {
+            setValues({
+                ...values,
+                productName: editedProductName,
+                productLink: editedProductLink,
+                productBrand: editedProductBrand,
+                productPrice: editedProductPrice,
+                productPriority: editedProductPriority,
+            })
+        };
+    }, [editedProductName])
+
+    const handleAddProduct = e => {
+        e.preventDefault();
+        dispatch(addProduct(productName, productLink, productBrand, productPrice, productPriority));
+        setValues({
+            ...values,
+            productName: '',
+            productLink: '',
+            productPrice: '',
+            productPriority: false,
+        })
+    } 
+
+    const handleEditProduct = e => {
+        e.preventDefault();
+        dispatch(editProduct(id, productName, productLink, productBrand, productPrice, productPriority));
+        setValues({
+            ...values,
+            productName: '',
+            productLink: '',
+            productPrice: '',
+            productPriority: false,
+        })
+        setActionType(true);
+    }
 
     const brandsOptions = brands.map(brand => {
         const { name } = brand;
@@ -27,17 +72,9 @@ const AddProductForm = () => {
         )
     });
 
-    const handleAddProduct = e => {
-        e.preventDefault();
-        dispatch(addProduct(productName, productLink, productBrand, productPrice, productPriority));
-        setValues({
-            ...values,
-            productName: '',
-            productLink: '',
-            productPrice: '',
-            productPriority: false,
-        })
-    } 
+    const button = actionType
+    ? (<button onClick={handleAddProduct}>Dodaj produkt</button>)
+    : (<button onClick={handleEditProduct}>Edytuj produkt</button>)
 
     return ( 
         <form className="form-container add-product" onSubmit={handleAddProduct}>
@@ -61,7 +98,8 @@ const AddProductForm = () => {
                 Wybierz markę
                 <select 
                 name="productBrand" 
-                onChange={handleChange}>
+                onChange={handleChange}
+                value={productBrand}>
                     <option value="" selected></option>
                     {brandsOptions}
                 </select>
@@ -79,10 +117,10 @@ const AddProductForm = () => {
                 <input 
                 type="checkbox" 
                 name="productPriority"
-                value="productPriority"
+                checked={productPriority}
                 onChange={handleChange}/>
             </label>
-            <button>Dodaj produkt</button>
+            {button}
         </form>
      );
 }

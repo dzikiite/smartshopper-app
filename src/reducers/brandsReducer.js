@@ -1,5 +1,5 @@
 import { ADD_BRAND, EDIT_BRAND, GET_BRANDS, REMOVE_BRAND } from '../actions/brandsAction';
-import { postBrandData, deleteBrand } from '../utils/fetchData';
+import { postBrandData, deleteBrand, putBrand } from '../utils/fetchData';
 
 const initialState = [];
 
@@ -14,6 +14,7 @@ export const brandsReducer = (state = initialState, action) => {
             return state.filter(brand => brand.id !== action.payload.id);
         
         case EDIT_BRAND:
+            putBrand(action.payload);
             const { id, name, link } = action.payload;
             return state.map(brand => {
                 if (brand.id !== id) {

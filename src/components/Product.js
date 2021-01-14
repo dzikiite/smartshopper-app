@@ -7,7 +7,14 @@ const Product = ({...props}) => {
 
     const dispatch = useDispatch();
 
-    const { id, name, link, brand, price, priority } = props;
+    const { 
+        id, 
+        name, 
+        link, 
+        brand, 
+        price, 
+        priority,
+        handleEditProduct } = props;
 
     const handleProductDelete = () => {
         dispatch(removeProduct(id));
@@ -27,7 +34,8 @@ const Product = ({...props}) => {
                 <AiFillDelete />
             </button>
             <button 
-            className="action-btn">
+            className="action-btn"
+            onClick={() => handleEditProduct(id, name, link, brand, price, priority)}>
                 <AiFillEdit />
             </button>
             </td>

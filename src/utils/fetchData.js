@@ -9,6 +9,8 @@ const {
   POST_PRODUCTS,
   DELETE_BRAND,
   DELETE_PRODUCT,
+  PUT_BRAND,
+  PUT_PRODUCT,
 } = API_URL;
 
 export const fetchBrands = async() => {
@@ -74,6 +76,24 @@ export const deleteProduct = async (product) => {
   try {
     const response = await axios.delete(DELETE_PRODUCT, { data: product });
     return response;
+  } catch(err) {
+    console.log(err);
+  }
+}
+
+export const putBrand = async (brand) => {
+  try {
+    const response = await axios.put(PUT_BRAND, brand);
+    return response;
+  } catch(err) {
+    console.log(err);
+  }
+}
+
+export const putProduct = async (product) => {
+  try {
+    const response = await axios.put(PUT_PRODUCT, product);
+    return response
   } catch(err) {
     console.log(err);
   }
