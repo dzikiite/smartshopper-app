@@ -1,13 +1,26 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import '../styles/AddBrandForm.scss';
 import { useForm } from '../hooks/useForm';
 import { useDispatch } from 'react-redux';
-import { addBrand } from '../actions/brandsAction';
+import { addBrand, editBrand } from '../actions/brandsAction';
 
-const AddBrandForm = () => {
+const AddBrandForm = ({ actionType, setActionType, editValues }) => {
     const { values, setValues, handleChange } = useForm();
     const { brandName, brandLink } = values;
     const dispatch = useDispatch();
+    const { id, editedBrandName, editedBrandLink } = editValues;
+
+    useEffect(() => {
+        console.log('form:')
+        console.log(editedBrandName);
+        if (!actionType) {
+            setValues({
+                ...values,
+                brandName: editedBrandName,
+                brandLink: editedBrandLink,
+            })
+        };
+    }, [editedBrandName])
 
     const handleAddBrand = e => {
         e.preventDefault();
@@ -17,10 +30,25 @@ const AddBrandForm = () => {
             brandName: '',
             brandLink: '',
         })
+    } 
+
+    const handleEditBrand = e => {
+        e.preventDefault();
+        dispatch(editBrand(id, brandName, brandLink));
+        setValues({
+            ...values,
+            brandName: '',
+            brandLink: '',
+        })
+        setActionType(true);
     }
 
+    const button = actionType
+    ? (<button onClick={handleAddBrand}>Dodaj sklep</button>)
+    : (<button onClick={handleEditBrand}>Edytuj sklep</button>);
+
     return ( 
-        <form className="form-container add-brand" onSubmit={handleAddBrand}>
+        <form className="form-container add-brand">
             <label htmlFor="brandName">
                 Nazwa sklepu 
                 <input 
@@ -37,7 +65,7 @@ const AddBrandForm = () => {
                 value={brandLink}
                 onChange={handleChange}/>
             </label>
-            <button>Dodaj sklep</button>
+            {button}
         </form>
      );
 }

@@ -1,8 +1,10 @@
 import React, { useEffect } from 'react';
 import '../styles/ProductsList.scss';
 import Product from './Product';
+import AddProductForm from './AddProductForm';
 import { useDispatch, useSelector } from 'react-redux';
 import { getProducts } from '../actions/productsAction';
+import { getBrands } from '../actions/brandsAction';
 
 const ProductsList = () => {
 
@@ -11,12 +13,13 @@ const ProductsList = () => {
 
     useEffect(() => {
         dispatch(getProducts()); 
+        dispatch(getBrands());
     }, []);
 
     const product = products.map(product => {
         return (
             <Product 
-            key={product._id}
+            key={product.id}
             {...product}/>
         )
     });
@@ -37,6 +40,7 @@ const ProductsList = () => {
                 {product}
                 </tbody>
             </table>
+            <AddProductForm />
         </div>
      );
 }

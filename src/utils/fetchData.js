@@ -51,7 +51,7 @@ export const postBrandData = async (brand) => {
   }
 }
 
-export const postProductsData = async (product) => {
+export const postProductData = async (product) => {
   try {
     const response = await axios.post(POST_PRODUCTS, product);
     const data = await JSON.stringify(response);
@@ -62,10 +62,17 @@ export const postProductsData = async (product) => {
 }
 
 export const deleteBrand = async (brand) => {
-  console.log(brand);
   try {
-    const response = axios.delete(DELETE_BRAND, brand);
-    console.log(response);
+    const response = await axios.delete(DELETE_BRAND, { data: brand });
+    return response;
+  } catch(err) {
+    console.log(err);
+  }
+}
+
+export const deleteProduct = async (product) => {
+  try {
+    const response = await axios.delete(DELETE_PRODUCT, { data: product });
     return response;
   } catch(err) {
     console.log(err);

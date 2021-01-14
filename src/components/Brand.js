@@ -1,14 +1,14 @@
 import React from 'react';
 import { AiFillDelete, AiFillEdit } from 'react-icons/ai';
-import { removeBrand } from '../actions/brandsAction';
+import { removeBrand, editBrand } from '../actions/brandsAction';
 import { useDispatch } from 'react-redux';
 
 const Brand = ({...props}) => {
-    const { id, name, link } = props;
+    const { id, name, link, handleEditBrand } = props;
     const dispatch = useDispatch();
 
     const handleDeleteBrand = () => {
-        dispatch(removeBrand(id))
+        dispatch(removeBrand(id));
     }
 
     return ( 
@@ -21,7 +21,11 @@ const Brand = ({...props}) => {
             onClick={handleDeleteBrand}>
                 <AiFillDelete />
             </button>
-            <button className="action-btn"><AiFillEdit /></button>
+            <button 
+            className="action-btn"
+            onClick={() => handleEditBrand(id, name, link)}>
+                <AiFillEdit />
+            </button>
             </td>
         </tr>
      );

@@ -1,0 +1,30 @@
+.add-product {
+    display: flex;
+    align-items: center;
+
+    input,
+    select {
+        display: block;
+        width: 340px;
+        height: 35px;
+        margin: .5rem;
+        border-radius: 3px;
+        outline: none;
+        border: 1px solid #bbbbbb;
+    }
+
+    select {
+        background-color: #fff;
+    }
+
+    input[type='checkbox'] {
+        display: inline;
+        margin-left: 1rem;
+        width: 20px;
+        height: 20px;
+    }
+    
+    button {
+        width: 20%;
+    }
+}

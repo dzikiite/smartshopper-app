@@ -1,23 +1,35 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { AiOutlineFire, AiFillDelete, AiFillEdit } from 'react-icons/ai';
+import { removeProduct } from '../actions/productsAction';
 
 const Product = ({...props}) => {
 
     const dispatch = useDispatch();
 
-    const { name, link, brands, price, priority } = props;
+    const { id, name, link, brand, price, priority } = props;
+
+    const handleProductDelete = () => {
+        dispatch(removeProduct(id));
+    }
 
     return ( 
         <tr>
             <td>{name}</td>
             <td><a href={link}>{link}</a></td>
-            <td>{brands}</td>
+            <td>{brand}</td>
             <td>{price}zł</td>
             <td>{priority ? <AiOutlineFire /> : '-'}</td>
             <td>
-            <button className="action-btn"><AiFillDelete /></button>
-            <button className="action-btn"><AiFillEdit /></button>
+            <button 
+            className="action-btn"
+            onClick={handleProductDelete}>
+                <AiFillDelete />
+            </button>
+            <button 
+            className="action-btn">
+                <AiFillEdit />
+            </button>
             </td>
         </tr>
      );
