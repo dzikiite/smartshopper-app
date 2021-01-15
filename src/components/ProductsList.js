@@ -43,15 +43,15 @@ const ProductsList = () => {
         <div className="products-container">
             <table>
                 <tbody>
-		        <tr>
-			        <th>Produkt</th>
-			        <th>Link</th>
-			        <th>Marka</th>
-			        <th>Cena</th>
-			        <th>Priorytet</th>
-                    <th>Akcje</th>
-		        </tr>
-                {product}
+		            <tr>
+			            <th>Produkt</th>
+			            <th>Link</th>
+			            <th>Marka</th>
+			            <th>Cena</th>
+			            <th>Priorytet</th>
+                        <th>Akcje</th>
+		            </tr>
+                    {product}
                 </tbody>
             </table>
             <AddProductForm 
