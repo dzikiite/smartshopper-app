@@ -10,7 +10,7 @@ export const productsReducer = (state = initialState, action) => {
             return [...state, action.payload];
         case REMOVE_PRODUCT:
             deleteProduct(action.payload);
-            return state.filter(product => product.id != action.payload.id);
+            return state.filter(product => product.id !== action.payload.id);
         case EDIT_PRODUCT:
             putProduct(action.payload);
             const { id, name, link, brand, price, priority } = action.payload;
@@ -30,6 +30,7 @@ export const productsReducer = (state = initialState, action) => {
             })
         case GET_PRODUCTS:
             return action.payload;
+        default:
+            return state;
     }
-    return state;
 }

@@ -29,6 +29,7 @@ export const brandsReducer = (state = initialState, action) => {
             });
         case GET_BRANDS:
             return action.payload;
+        default:
+            return state;
     }
-    return state;
 }

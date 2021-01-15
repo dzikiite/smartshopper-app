@@ -100,7 +100,7 @@ const AddProductForm = ({ actionType, setActionType, editValues }) => {
                 name="productBrand" 
                 onChange={handleChange}
                 value={productBrand}>
-                    <option value="" selected></option>
+                    <option value=""></option>
                     {brandsOptions}
                 </select>
             </label>

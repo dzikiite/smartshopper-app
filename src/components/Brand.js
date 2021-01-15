@@ -1,6 +1,6 @@
 import React from 'react';
 import { AiFillDelete, AiFillEdit } from 'react-icons/ai';
-import { removeBrand, editBrand } from '../actions/brandsAction';
+import { removeBrand } from '../actions/brandsAction';
 import { useDispatch } from 'react-redux';
 
 const Brand = ({...props}) => {
